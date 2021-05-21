@@ -5,17 +5,17 @@ public class Main {
     public static void main(String[] args) {
 
 
-        String action = "";
+        String state = "";
 
-        while (!action.equals("exit")) {
+        while (!state.equals("exit")) {
 
             System.out.println("Write action (buy, fill, take, remaining, exit)");
             Scanner scanner = new Scanner(System.in);
-            action = scanner.nextLine();
+            state = scanner.nextLine().toUpperCase();
+            States stateAsEnum = States.valueOf(state);
 
-
-            switch (action) {
-                case "buy": {
+            switch (stateAsEnum) {
+                case BUY: {
                     System.out.print("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: \n" +
                             "Type 'back' if you want to go back\n");
                     String coffeeType = scanner.nextLine();
@@ -23,7 +23,7 @@ public class Main {
                     break;
                 }
 
-                case "fill":
+                case FILL:
                     System.out.println("Write how many ml of water do you want to add: ");
                     int waterToAdd = scanner.nextInt();
                     System.out.println("Write how many ml of milk do you want to add: ");
@@ -35,13 +35,13 @@ public class Main {
                     CoffeeMachine.fillCoffeeMachine(waterToAdd, milkToAdd, coffeeBeansToAdd, disposableCupsToAdd);
                     break;
 
-                case "take":
+                case TAKE:
                     CoffeeMachine.takeMoney(CoffeeMachine.money);
                     break;
-                case "remaining":
+                case REMAINING:
                     CoffeeMachine.checkRemainingIngredients();
                     break;
-                case "exit":
+                case EXIT:
                     break;
                 default:
                     System.out.println("Invalid command");
