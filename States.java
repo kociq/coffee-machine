@@ -1,17 +1,8 @@
 public enum States {
-    BUY("buy"),
-    FILL("fill"),
-    TAKE("take"),
-    REMAINING("remaining"),
-    EXIT("exit");
+    BUY,
+    FILL,
+    TAKE,
+    REMAINING,
+    EXIT;
 
-    private final String state;
-
-    States(String state) {
-        this.state = state;
-    }
-
-    public String getState() {
-        return state;
-    }
 }
